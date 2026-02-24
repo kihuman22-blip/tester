@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Project Title</title>
+<title>La Piazza - Virtuelle Tour</title>
 <meta charset="utf-8">
 <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
 <style> @-ms-viewport { width: device-width; } </style>
@@ -60,6 +60,13 @@
 
 <div id="titleBar">
   <h1 class="sceneName"></h1>
+</div>
+
+<div id="pizza-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; z-index: 9999; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 320px; font-family: Arial, sans-serif;">
+  <h2 style="margin-top: 0; color: #333;">Pizza Italiano</h2>
+  <img src="img/pizza.jpg" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
+  <p style="font-size: 14px; color: #666;">Frisch aus dem Steinofen mit Mozzarella und Basilikum.</p>
+  <button onclick="document.getElementById('pizza-popup').style.display='none'" style="background: #d32f2f; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">Schließen</button>
 </div>
 
 <a href="javascript:void(0)" id="autorotateToggle">
