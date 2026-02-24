@@ -269,7 +269,6 @@
     });
 
     // Prevent touch and scroll events from reaching the parent element.
-    // This prevents the view control logic from interfering with the hotspot.
     stopTouchAndScrollEventPropagation(wrapper);
 
     // Create tooltip element.
@@ -290,18 +289,6 @@
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
     wrapper.classList.add('info-hotspot');
-
-    // --- MEIN CODE START ---
-    // Prüfen, ob der Hotspot "Pizza Italiano" heißt
-    if (hotspot.title === "Pizza Italiano") {
-      wrapper.addEventListener('click', function() {
-        var modal = document.getElementById('pizza-popup');
-        if (modal) {
-          modal.style.display = 'block';
-        }
-      });
-    }
-    // --- MEIN CODE ENDE ---
 
     // Create hotspot/tooltip header.
     var header = document.createElement('div');
@@ -352,15 +339,22 @@
     document.body.appendChild(modal);
 
     var toggle = function() {
-      // Nur toggeln, wenn es NICHT die Pizza ist (sonst öffnen sich zwei Sachen)
-      if (hotspot.title !== "Pizza Italiano") {
-        wrapper.classList.toggle('visible');
-        modal.classList.toggle('visible');
+      // --- LOGIK FÜR DAS PIZZA POPUP ---
+      if (hotspot.title === "Pizza Italiano") {
+          var pizzaPopup = document.getElementById('pizza-popup');
+          if (pizzaPopup) {
+              pizzaPopup.style.display = 'block';
+              return; // Standard-Toggle abbrechen
+          }
       }
+      
+      wrapper.classList.toggle('visible');
+      modal.classList.toggle('visible');
     };
 
     // Show content when hotspot is clicked.
-    wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
+    // Wir legen das Event auf den gesamten Wrapper, damit man nicht exakt das "i" treffen muss
+    wrapper.addEventListener('click', toggle);
 
     // Hide content when close icon is clicked.
     modal.querySelector('.info-hotspot-close-wrapper').addEventListener('click', toggle);
