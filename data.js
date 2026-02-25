@@ -308,7 +308,7 @@ var APP_DATA = {
         {
           "yaw": -0.7564633306042978,
           "pitch": 0.23884928138396333,
-          "title": "Pizza Italiano<div><br></div>",
+          "title": "Pizza<div><br></div>",
           "text": "<br>"
         }
       ]
